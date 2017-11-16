@@ -1,0 +1,38 @@
+{
+  "name": "react-koa-ssr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Maxence Grosjean <maxence.grosjean@cpe.fr>",
+  "dependencies": {
+    "@std/esm": "^0.15.0",
+    "koa": "^2.4.1"
+  },
+  "scripts": {
+    "install:eslint": "npm info eslint-config-airbnb@latest peerDependencies --json | command sed 's/[\\{\\},]//g ; s/: /@/g' | xargs yarn add --dev eslint-config-airbnb@latest",
+    "test:eslint": "eslint src",
+    "test:flow": "flow",
+    "test:jest": "jest --coverage",
+    "test:all": "eslint src && flow && jest --coverage",
+    "dev:koa": "nodemon src/",
+    "dev:react": ""
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "flow-bin": "^0.59.0",
+    "jest": "^21.2.1",
+    "nodemon": "^1.12.1"
+  },
+  "@std/esm": {
+    "esm": "js"
+  }
+}
