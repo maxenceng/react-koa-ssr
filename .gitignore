@@ -3,3 +3,4 @@ yarn.lock
 coverage/
 .idea/
 .DS_Store
+.tern-project
