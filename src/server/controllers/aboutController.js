@@ -2,11 +2,11 @@
 
 // import { APP_NAME } from '../../utils/config'
 import renderApp from '../renderApp'
-import { homePage } from '../defaultState'
+import { aboutPage } from '../defaultState'
 
 const get = async (ctx: Object, next: any) => {
   await next()
-  ctx.body = renderApp(ctx.url, homePage())
+  ctx.body = renderApp(ctx.url, aboutPage())
 }
 
 const post = async (ctx: Object, next: any) => {

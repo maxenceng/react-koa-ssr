@@ -2,7 +2,7 @@
 
 import Router from 'koa-router'
 
-import { get } from '../controllers/indexController'
+import { get } from '../controllers/aboutController'
 
 const index = new Router()
 

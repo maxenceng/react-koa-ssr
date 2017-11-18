@@ -1,3 +1,5 @@
+// @flow
+
 // General
 export const APP_NAME = 'React Koa SSR'
 export const IS_PROD = process.env.NODE_ENV === 'production'
