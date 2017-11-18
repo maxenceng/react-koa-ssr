@@ -7,7 +7,12 @@ import { Route } from 'react-router-dom'
 import { ROUTES } from '../utils/routes'
 import Nav from './components/Nav'
 
-const createRoutes = (routes) => {
+/**
+ * Creates our routes for the React Router
+ * @param  {[type]} routes
+ * @return {Array<any>}
+ */
+const createRoutes = (routes: Map<string, Array<any>>): Array<any> => {
   const res = []
   routes.forEach((value, key) => {
     if (key === 'Home') {
@@ -21,6 +26,9 @@ const createRoutes = (routes) => {
   return res
 }
 
+/**
+ * Contains the elements of the pages powered by React
+ */
 export default () =>
   (
     <div>

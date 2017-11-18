@@ -5,13 +5,21 @@ import ReactDOMServer from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import Helmet from 'react-helmet'
+import { oneLine } from 'common-tags'
 
-import { STATIC_PATH, QUERY_CLASS, IS_PROD, WDS_PORT } from '../utils/config'
+import { IS_PROD } from '../utils/config'
 import initStore from './initStore'
 import App from '../client/App'
+import template from '../utils/template'
 
-
-export default (location: string, initialState: ?Object, routerContext: ?Object = {}) => {
+/**
+ * Renders our app on the server
+ * @param  {string} location
+ * @param  {} initialState
+ * @param  {} routerContext
+ * @return {string}
+ */
+export default (location: string, initialState: ?Object, routerContext: ?Object = {}): string => {
   const store = initStore(initialState)
   // eslint-disable-next-line function-paren-newline
   const appHtml = ReactDOMServer.renderToString(
@@ -21,19 +29,6 @@ export default (location: string, initialState: ?Object, routerContext: ?Object 
       </StaticRouter>
     </Provider>)
   const head = Helmet.rewind()
-
-  return `
-  <html>
-    <head>
-      ${head.title}
-      ${head.meta}
-      <link rel="stylesheet" href="${STATIC_PATH}/css/main.css">
-    </head>
-    <body>
-      <div class="${QUERY_CLASS}">${appHtml}</div>
-      <script>window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState())}</script>
-      <script src="${IS_PROD ? '' : `http://localhost:${WDS_PORT}/`}${STATIC_PATH}/js/bundle.js"></script>
-    </body>
-  </html>
-    `
+  const tpl = template(head.title, head.meta, appHtml, store)
+  return IS_PROD ? oneLine`${tpl}` : tpl
 }

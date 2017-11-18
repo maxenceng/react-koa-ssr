@@ -6,6 +6,10 @@ import thunkMiddleware from 'redux-thunk'
 
 import testReducer from '../client/reducers/testReducer'
 
+/**
+ * Initiates the store on the server
+ * @param  {Object} plainState
+ */
 export default (plainState: ?Object) => {
   const preloadedState = plainState ? {} : undefined
 

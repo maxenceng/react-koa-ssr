@@ -3,6 +3,9 @@
 import React from 'react'
 import DynamicHelmet from '../components/DynamicHelmet'
 
+/**
+ * Displayed when the user tries to access a non-existing route
+ */
 export default () =>
   (
     <div>

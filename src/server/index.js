@@ -1,6 +1,9 @@
 // @flow
 
+import 'regenerator-runtime/runtime'
+
 import Koa from 'koa'
+import Compress from 'koa-compress'
 import Serve from 'koa-static'
 import Mount from 'koa-mount'
 import Router from 'koa-router'
@@ -14,9 +17,13 @@ import { HOME_ROUTE, ABOUT_ROUTE, NOT_FOUND_ROUTE } from '../utils/routes'
 const app = new Koa()
 const router = new Router()
 
-app.use(Mount('/static', Serve(STATIC_PATH)))
+// Enables compression
+app.use(Compress())
 
+// Routes our static assets
+app.use(Mount(`/${STATIC_PATH}`, Serve(STATIC_PATH)))
 
+// Routes everything we have on the server
 router.use(HOME_ROUTE, index.routes())
 router.use(ABOUT_ROUTE, about.routes())
 router.use(NOT_FOUND_ROUTE, notFound.routes())
