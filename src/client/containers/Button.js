@@ -14,9 +14,9 @@ const mapStateToProps = () => ({
 
 /**
  * Triggers the testReducer on click
- * @param  {any} dispatch
+ * @param  {Function} dispatch
  */
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   onclick: () => { dispatch(sayOkay('Redux OK!')) },
 })
 

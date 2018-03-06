@@ -16,12 +16,12 @@ const initialState = Immutable.fromJS({
  * Modifies the state if SAY_OKAY is called
  * @param  {ImmutType} state
  * @param  {string} type
- * @param  {any} payload
+ * @param  {string} payload
  * @return {ImmutType}
  */
 export default (
   state: ImmutType = initialState,
-  action: { type: string, payload: any },
+  action: { type: string, payload: string },
 ): ImmutType => {
   switch (action.type) {
     case SAY_OKAY:

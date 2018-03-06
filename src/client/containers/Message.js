@@ -7,8 +7,8 @@ import Message from '../components/Message'
 /**
  * Maps the text when triggered
  */
-const mapStateToProps = state => ({
-  message: state.test.get('message'),
+const mapStateToProps = ({ test }) => ({
+  message: test.get('message'),
 })
 
 export default connect(mapStateToProps)(Message)

@@ -9,22 +9,14 @@ import Nav from './components/Nav'
 
 /**
  * Creates our routes for the React Router
- * @param  {[type]} routes
- * @return {Array<any>}
+ * @return {Array<Object>}
  */
-const createRoutes = (routes: Map<string, Array<any>>): Array<any> => {
-  const res = []
-  routes.forEach((value, key) => {
-    if (key === 'Home') {
-      res.push(<Route key={key} exact path={value[0]} component={value[1]} />)
-    } else if (key !== 'Not Found') {
-      res.push(<Route key={key} path={value[0]} component={value[1]} />)
-    } else {
-      res.push(<Route key={key} component={value[1]} />)
-    }
+const createRoutes = (): Array<Object> =>
+  Array.from(ROUTES).map(([key, value]) => {
+    if (key === 'Home') return <Route key={key} exact path={value.route} component={value.module} />
+    if (key !== 'Not Found') return <Route key={key} path={value.route} component={value.module} />
+    return <Route key={key} component={value.module} />
   })
-  return res
-}
 
 /**
  * Contains the elements of the pages powered by React
@@ -34,7 +26,7 @@ export default () =>
     <div>
       <Nav />
       <Switch>
-        {createRoutes(ROUTES)}
+        {createRoutes()}
       </Switch>
     </div>
   )
